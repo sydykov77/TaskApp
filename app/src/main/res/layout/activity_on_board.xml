@@ -19,8 +19,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:text="skip"
+        android:textColor="@color/colorWhite"
         android:textStyle="italic"
-        android:background="@color/colorWhite"/>
+        android:background="@color/colorBlue"/>
 
 
     <com.google.android.material.tabs.TabLayout
@@ -32,7 +33,6 @@
         app:tabBackground="@drawable/no24dp"
         android:layout_centerHorizontal="true"
         app:tabIndicatorColor="@color/colorWhite"
-        app:tabMaxWidth="15dp"
         android:layout_marginBottom="50dp"
         app:tabGravity="center" />
 </RelativeLayout>

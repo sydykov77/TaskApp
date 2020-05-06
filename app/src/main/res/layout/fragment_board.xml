@@ -19,14 +19,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
+        android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="italic"
         android:textColor="@color/colorAccent"/>
 
     <TextView
+        android:layout_marginTop="40dp"
         android:id="@+id/textDesc"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
@@ -35,7 +37,6 @@
     <Button
         android:id="@+id/button_Getstart"
         android:layout_marginTop="20dp"
-
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:text="Get Started"

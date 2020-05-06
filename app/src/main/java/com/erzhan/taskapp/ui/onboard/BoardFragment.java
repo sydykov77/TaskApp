@@ -59,16 +59,19 @@ public class BoardFragment extends Fragment {
                 imageView.setImageResource(R.drawable.bet);
                 textTitle.setText("    Ставки на Спорт!");
                 textDesc.setText("Делайте ставки в надёжной букмекерской компании!");
+                button.setVisibility(View.GONE);
                 break;
             case 1:
                 imageView.setImageResource(R.drawable.bet);
                 textTitle.setText("Большие Выигрыши!");
                 textDesc.setText("Ставки на спорт в Live и по линии");
+                button.setVisibility(View.GONE);
                 break;
             case 2:
                 imageView.setImageResource(R.drawable.bet);
                 textTitle.setText("Высокие коэффициенты!");
                 textDesc.setText("Лучшие коэффициенты!");
+                button.setVisibility(View.VISIBLE);
                 break;
         }
     }
