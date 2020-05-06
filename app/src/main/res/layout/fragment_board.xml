@@ -12,7 +12,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
         android:src="@android:drawable/ic_input_add"/>
     <TextView
         android:id="@+id/textTitle"
@@ -24,25 +24,24 @@
         android:textColor="@color/colorAccent"/>
 
     <TextView
-        android:id="@+id/textTitle2"
-        android:layout_marginTop="30dp"
+        android:id="@+id/textDesc"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="150dp"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
         android:textSize="20sp"
          />
     <Button
-        android:id="@+id/btn_get_started"
-        style="?android:attr/borderlessButtonStyle"
+        android:id="@+id/button_Getstart"
+        android:layout_marginTop="20dp"
+
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary"
-        android:text="@string/ob_get_started"
-        android:textAllCaps="false"
-        android:textColor="@color/colorWhite"
-        android:visibility="gone"
-        />
+        android:layout_height="40dp"
+        android:text="Get Started"
+        android:textColor="#FFFFFF"
+        android:background="#2E9FD1"
+        android:textSize="30sp" />
+
 
 </LinearLayout>

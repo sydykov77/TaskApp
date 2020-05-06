@@ -4,10 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context=".ui.onboard.OnBoardActivity">
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_below="@id/btn_skip"/>
 
+    <Button
+        android:id="@+id/btn_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="skip"
+        android:textStyle="italic"
+        android:background="@color/colorWhite"/>
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        app:tabIndicator="@drawable/ic_home"
+        app:tabBackground="@drawable/no24dp"
+        android:layout_centerHorizontal="true"
+        app:tabIndicatorColor="@color/colorWhite"
+        app:tabMaxWidth="15dp"
+        android:layout_marginBottom="50dp"
+        app:tabGravity="center" />
 </RelativeLayout>
