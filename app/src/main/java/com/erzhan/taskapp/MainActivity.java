@@ -1,15 +1,20 @@
 package com.erzhan.taskapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Button;
 
+import com.erzhan.taskapp.ui.header.HeaderActivity;
 import com.erzhan.taskapp.ui.onboard.OnBoardActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -23,16 +28,20 @@ import androidx.appcompat.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    Button exit;
+    View header;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (true) {
+        if (!isShown()) {
             startActivity(new Intent(this, OnBoardActivity.class));
             finish();
             return;
         }
+        exit = findViewById(R.id.action_exit);
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -54,6 +63,14 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        View header = navigationView.getHeaderView(0);
+        header.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, HeaderActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -62,6 +79,18 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_exit:
+                exit_click();
+                finish();
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -74,12 +103,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-        fragment.getChildFragmentManager().getFragments().get(0).onActivityResult(requestCode,resultCode,data);
+        if (resultCode == RESULT_OK && requestCode == 100 && data != null) {
+            Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+            fragment.getChildFragmentManager().getFragments().get(0).onActivityResult(requestCode, resultCode, data);
+        }
     }
 
-    public void exit_click(MenuItem item) {
-        this.finish();
+    private void exit_click(){
+        SharedPreferences pref = getSharedPreferences("settings", Context.MODE_PRIVATE);
+        pref.edit().putBoolean("isShown",false).apply();
     }
+
+    private boolean isShown() {
+        SharedPreferences preferences = getSharedPreferences("settings", Context.MODE_PRIVATE);
+        return preferences.getBoolean("isShown", false);
+    }
+
 
 }

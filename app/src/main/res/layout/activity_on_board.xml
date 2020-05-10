@@ -26,13 +26,11 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:tabIndicator="@drawable/ic_home"
-        app:tabBackground="@drawable/no24dp"
+        app:tabIndicator="@drawable/selected_item_dot"
+        app:tabBackground="@drawable/non_selected_item_dot"
         android:layout_centerHorizontal="true"
-        app:tabIndicatorColor="@color/colorWhite"
-        android:layout_marginBottom="50dp"
-        app:tabGravity="center" />
+        app:tabIndicatorColor="@color/colorWhite" />
 </RelativeLayout>
