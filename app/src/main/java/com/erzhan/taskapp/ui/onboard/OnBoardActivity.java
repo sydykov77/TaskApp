@@ -7,36 +7,42 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.erzhan.taskapp.MainActivity;
 import com.erzhan.taskapp.R;
 import com.google.android.material.tabs.TabLayout;
 
-public class OnBoardActivity extends AppCompatActivity {
+public class OnBoardActivity extends AppCompatActivity  {
+    Button buttonSkip;
     ViewPager viewPager;
-    Button fab_skip;
-
+    TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_board);
         viewPager = findViewById(R.id.viewPager);
-        fab_skip = findViewById(R.id.btn_skip);
+        buttonSkip = findViewById(R.id.btn_skip);
         viewPager.setAdapter(new SectionsPagerAdapter(getSupportFragmentManager()));
-        fab_skip.setOnClickListener(new View.OnClickListener() {
+        tabLayout = findViewById(R.id.tabLayout);
+        tabLayout.setupWithViewPager(viewPager,true);
+        buttonSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 viewPager.setCurrentItem(2);
+                buttonSkip.setVisibility(View.INVISIBLE);
             }
         });
-        TabLayout tabLayout = findViewById(R.id.tabLayout);
-        tabLayout.setupWithViewPager(viewPager, true);
     }
 
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+
+
+    public class SectionsPagerAdapter extends FragmentPagerAdapter{
 
         public SectionsPagerAdapter(@NonNull FragmentManager fm) {
             super(fm, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
@@ -46,7 +52,7 @@ public class OnBoardActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             Bundle bundle = new Bundle();
-            bundle.putInt("pos", position);
+            bundle.putInt("pos",position);
             BoardFragment fragment = new BoardFragment();
             fragment.setArguments(bundle);
             return fragment;
@@ -58,4 +64,3 @@ public class OnBoardActivity extends AppCompatActivity {
         }
     }
 }
-

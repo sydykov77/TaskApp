@@ -1,12 +1,10 @@
-package com.erzhan.taskapp.ui.header;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+package com.erzhan.taskapp;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.erzhan.taskapp.R;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class HeaderActivity extends AppCompatActivity {
 

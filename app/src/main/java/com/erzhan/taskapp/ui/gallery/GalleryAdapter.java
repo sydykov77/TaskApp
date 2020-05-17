@@ -39,11 +39,11 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView list;
 
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            list = itemView.findViewById(R.id.name);
-        }
+    public ViewHolder(@NonNull View itemView) {
+        super(itemView);
+        list = itemView.findViewById(R.id.name);
     }
+}
 }
 
 

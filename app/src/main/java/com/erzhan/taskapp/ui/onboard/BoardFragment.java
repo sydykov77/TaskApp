@@ -46,20 +46,11 @@ public class BoardFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final OnBoardActivity onBoardActivity = (OnBoardActivity) getActivity();
         textTitle = view.findViewById(R.id.textTitle);
         linearLayout = view.findViewById(R.id.liner);
         textDesc = view.findViewById(R.id.textDesc);
         button = view.findViewById(R.id.button_Getstart);
         ImageView imageView = view.findViewById(R.id.imageView);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(onBoardActivity, MainActivity.class);
-                startActivity(intent);
-                onBoardActivity.finish();
-            }
-        });
         int pos = getArguments().getInt("pos");
         switch (pos) {
             case 0:
