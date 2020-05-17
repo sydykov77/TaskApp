@@ -91,11 +91,5 @@ public class FormActivity extends AppCompatActivity  {
 //        finish();
 //    }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d("des","des");
-    }
-
 
 }

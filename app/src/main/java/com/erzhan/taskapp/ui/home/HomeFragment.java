@@ -28,9 +28,6 @@ public class HomeFragment extends Fragment {
 
     private TaskAdapter adapter;
     private ArrayList<Task> list = new ArrayList<>();
-    Task task;
-    int pos;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_home, container, false);
@@ -44,9 +41,37 @@ public class HomeFragment extends Fragment {
         list.addAll(App.getInstance().getDatabase().taskDao().getAll());
         adapter = new TaskAdapter(list);
         recyclerView.setAdapter(adapter);
+        adapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(int pos) {
+                Intent intent= new Intent(getContext(),FormActivity.class);
+                intent.putExtra("task",list.get(pos));
+                startActivity(intent);
+
+            }
+
+            @Override
+            public void onItemLongClick(int pos) {
+                showAlert(list.get(pos));
+
+            }
+        });
         loadData();
 
 
+    }
+
+    private void showAlert(final Task task) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setMessage("Delete?")
+                .setNegativeButton("Cancel",null)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        App.getInstance().getDatabase().taskDao().delete(task);
+                    }
+                });
+        builder.show();
     }
 
     private void loadData() {
