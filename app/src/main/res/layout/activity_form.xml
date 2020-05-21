@@ -11,24 +11,25 @@
         android:id="@+id/editTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Задача"/>
+        android:hint="Задача"
+        android:gravity="center"
+        style="@style/EditTextStyle"/>
     <EditText
         android:id="@+id/editDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Описание задачи"/>
+        android:hint="Описание задачи"
+        android:gravity="center"
+        style="@style/EditTextStyle"/>
     <Button
         android:id="@+id/save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save"
+        android:text="Сохранить"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/button_rounded_gradient"
+        android:onClick="onClick"
         />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/change"
-        android:visibility="invisible"
-        android:text="change"
-        />
+
 
 </LinearLayout>

@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.erzhan.taskapp.MainActivity;
 import com.erzhan.taskapp.R;
 
@@ -52,15 +53,18 @@ public class BoardFragment extends Fragment {
         button = view.findViewById(R.id.button_Getstart);
         ImageView imageView = view.findViewById(R.id.imageView);
         int pos = getArguments().getInt("pos");
+        final LottieAnimationView animationView = view.findViewById(R.id.animation_view);
         switch (pos) {
             case 0:
-                imageView.setImageResource(R.drawable.bet);
+                //imageView.setImageResource(R.drawable.bet);
+                animationView.setAnimation("first.json");
                 textTitle.setText("    Ставки на Спорт!");
                 textDesc.setText("Делайте ставки в надёжной букмекерской компании!");
                 button.setVisibility(View.GONE);
                 break;
             case 1:
-                imageView.setImageResource(R.drawable.bet);
+                //imageView.setImageResource(R.drawable.bet);
+                animationView.setAnimation("second.json");
                 textTitle.setText("Большие Выигрыши!");
                 textDesc.setText("Ставки на спорт в Live и по линии");
                 button.setVisibility(View.GONE);
@@ -68,7 +72,8 @@ public class BoardFragment extends Fragment {
 
                 break;
             case 2:
-                imageView.setImageResource(R.drawable.bet);
+                //imageView.setImageResource(R.drawable.bet);
+                animationView.setAnimation("third.json");
                 textTitle.setText("Высокие коэффициенты!");
                 textDesc.setText("Лучшие коэффициенты!");
                 button.setVisibility(View.VISIBLE);

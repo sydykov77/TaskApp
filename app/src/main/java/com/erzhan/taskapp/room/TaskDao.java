@@ -34,6 +34,8 @@ public interface TaskDao {
     void update(Task task);
     @Delete
     void delete(Task task);
+    @Query("SELECT * FROM task order by title asc ")
+    List<Task> sort();
 
 
 }

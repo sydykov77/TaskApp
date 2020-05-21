@@ -28,6 +28,7 @@ public class HomeFragment extends Fragment {
 
     private TaskAdapter adapter;
     private ArrayList<Task> list = new ArrayList<>();
+    LinearLayoutManager layoutManager;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_home, container, false);
@@ -61,17 +62,33 @@ public class HomeFragment extends Fragment {
 
     }
 
-    private void showAlert(final Task task) {
+    private void showAlert(final Task task){
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-        builder.setMessage("Delete?")
-                .setNegativeButton("Cancel",null)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setMessage("Delete ?")
+                .setNegativeButton("no",null)
+                .setPositiveButton("yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         App.getInstance().getDatabase().taskDao().delete(task);
                     }
                 });
         builder.show();
+    }
+
+    public void sort1() {
+        list.clear();
+        list.addAll(App.getInstance().getDatabase().taskDao().sort());
+        adapter.notifyDataSetChanged();
+        layoutManager.setReverseLayout(false);
+        layoutManager.setStackFromEnd(false);
+    }
+
+    public void sort2() {
+        list.clear();
+        list.addAll(App.getInstance().getDatabase().taskDao().getAll());
+        adapter.notifyDataSetChanged();
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
     }
 
     private void loadData() {
@@ -84,15 +101,4 @@ public class HomeFragment extends Fragment {
             }
         });
     }
-
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if(requestCode == 100 && resultCode==RESULT_OK && data!=null){
-//            task = (Task) data.getSerializableExtra("task");
-//            list.add(pos,task);
-//            adapter.update(list);
-//            adapter.notifyDataSetChanged();
-//        }
-//    }
 }
