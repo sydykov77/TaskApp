@@ -10,10 +10,12 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.ImageView;
 
+import com.erzhan.taskapp.login.PhoneActivity;
 import com.erzhan.taskapp.ui.home.HomeFragment;
 import com.erzhan.taskapp.ui.onboard.OnBoardActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -38,7 +40,11 @@ public class MainActivity extends AppCompatActivity  {
             finish();
             return;
         }
-
+        if (FirebaseAuth.getInstance().getCurrentUser()==null){
+            startActivity(new Intent(this, PhoneActivity.class));
+            finish();
+            return;
+        }
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
